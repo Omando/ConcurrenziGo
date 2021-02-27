@@ -1,7 +1,7 @@
 package webCrawler
 
 import (
-	sequential "ConcurrenziGo/collections"
+	sequential2 "ConcurrenziGo/collections/sequential"
 	"fmt"
 )
 
@@ -11,7 +11,7 @@ func CrawlSequentially(topUrl string) {
 	processed := make(map[string]bool)
 
 	// Used in breadth traversal
-	var queue = sequential.CreateQueue()
+	var queue = sequential2.CreateQueue()
 	queue.Enqueue(topUrl)
 
 	for !queue.IsEmpty() {
