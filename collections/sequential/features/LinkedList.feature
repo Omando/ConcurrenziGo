@@ -25,3 +25,18 @@ Feature: Singly linked list
       |DoublyLinkedList|
       |CircularlyLinkedList|
 
+  Scenario Outline: Prepending
+    Given linked list implementation is "<implementation>"
+    When I prepend items
+      |value|
+      |1    |
+      |2    |
+      |3    |
+    Then Head is 3
+    And Tail is 1
+    Examples:
+      |implementation|
+      |SinglyLinkedList|
+      |DoublyLinkedList|
+      |CircularlyLinkedList|
+
