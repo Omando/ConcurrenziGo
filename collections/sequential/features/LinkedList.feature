@@ -40,3 +40,19 @@ Feature: Singly linked list
       |DoublyLinkedList|
       |CircularlyLinkedList|
 
+  Scenario Outline: Removing head
+    Given linked list implementation is "<implementation>"
+    And  I append items
+      |value|
+      |1    |
+      |2    |
+      |3    |
+    When I remove 1
+    Then Head is 2
+    And Tail is 3
+    Examples:
+      |implementation|
+      |SinglyLinkedList|
+      |DoublyLinkedList|
+      |CircularlyLinkedList|
+
