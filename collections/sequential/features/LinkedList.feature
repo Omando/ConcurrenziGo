@@ -56,3 +56,19 @@ Feature: Singly linked list
       |DoublyLinkedList|
       |CircularlyLinkedList|
 
+  Scenario Outline: Removing tail
+    Given linked list implementation is "<implementation>"
+    And  I append items
+      |value|
+      |1    |
+      |2    |
+      |3    |
+    When I remove 3
+    Then Head is 1
+    And Tail is 2
+    Examples:
+      |implementation|
+      |SinglyLinkedList|
+      |DoublyLinkedList|
+      |CircularlyLinkedList|
+
