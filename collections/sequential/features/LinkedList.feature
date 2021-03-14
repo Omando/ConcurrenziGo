@@ -72,3 +72,20 @@ Feature: Singly linked list
       |DoublyLinkedList|
       |CircularlyLinkedList|
 
+  Scenario Outline: Removing inner item
+    Given linked list implementation is "<implementation>"
+    And  I append items
+      |value|
+      |1    |
+      |2    |
+      |3    |
+    When I remove 2
+    Then Head is 1
+    And Tail is 3
+    Examples:
+      |implementation|
+      |SinglyLinkedList|
+      |DoublyLinkedList|
+      |CircularlyLinkedList|
+
+  
