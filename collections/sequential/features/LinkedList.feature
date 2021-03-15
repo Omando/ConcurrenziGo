@@ -88,4 +88,18 @@ Feature: Singly linked list
       |DoublyLinkedList|
       |CircularlyLinkedList|
 
-  
+  Scenario Outline: Removing non-existing item
+    Given linked list implementation is "<implementation>"
+    And  I append items
+      |value|
+      |1    |
+      |2    |
+      |3    |
+    When I remove 100
+    Then item is not found
+    Examples:
+      |implementation|
+      |SinglyLinkedList|
+      |DoublyLinkedList|
+      |CircularlyLinkedList|
+
