@@ -103,3 +103,32 @@ Feature: Singly linked list
       |DoublyLinkedList|
       |CircularlyLinkedList|
 
+  Scenario Outline: Finding an existing item
+    Given linked list implementation is "<implementation>"
+    And  I append items
+      |value|
+      |1    |
+      |2    |
+      |3    |
+    When I search for 2
+    Then item is found
+    Examples:
+      |implementation|
+      |SinglyLinkedList|
+      |DoublyLinkedList|
+      |CircularlyLinkedList|
+
+  Scenario Outline: Finding a non-existing item
+    Given linked list implementation is "<implementation>"
+    And  I append items
+      |value|
+      |1    |
+      |2    |
+      |3    |
+    When I search for 200
+    Then item is not found
+    Examples:
+      |implementation|
+      |SinglyLinkedList|
+      |DoublyLinkedList|
+      |CircularlyLinkedList|
