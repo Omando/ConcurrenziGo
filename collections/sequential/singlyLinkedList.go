@@ -26,3 +26,21 @@ func NewSLL() *SinglyLinkedList {
 	return new(SinglyLinkedList).init() // same as:
 }
 
+// Receiver is a pointer which receives a copy of the address. If receiver was value,
+// a cop of the value is passed and changes inside this function are not visible
+// outside the function
+func (list *SinglyLinkedList) init() *SinglyLinkedList {
+	list.head = nil
+	list.tail = nil
+	list.size = 0
+	return list
+}
+
+// First returns the first element of list l or nil if the list is empty.
+func (list *SinglyLinkedList) First() (interface{}, error) {
+	if list.size == 0 {
+		return nil, errors.New("list is empty")
+	}
+	return list.head.value, nil
+}
+
