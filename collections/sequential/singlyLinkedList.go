@@ -44,3 +44,16 @@ func (list *SinglyLinkedList) First() (interface{}, error) {
 	return list.head.value, nil
 }
 
+// Last returns the last element of list l or nil if the list is empty.
+func (list *SinglyLinkedList) Last() (interface{}, error) {
+	if list.size == 0 {
+		return nil, errors.New("list is empty")
+	}
+	return list.tail.value, nil
+}
+
+// Length returns count of elements in the list
+func (list *SinglyLinkedList) Length() int {
+	return list.size
+}
+
