@@ -73,3 +73,52 @@ func (list *SinglyLinkedList) Prepend(value interface{}) {
 	list.size++
 }
 
+// Append adds the given value to the end of the list
+func (list *SinglyLinkedList) Append(value interface{}) {
+	node := &LinkedListNode{value: value, next: nil}
+	// If the list is empty, head and tail both point to the new node
+	if list.size == 0 {
+		list.head = node
+		list.tail = node
+	} else {
+		list.tail.next = node
+		list.tail = node
+	}
+	// Update size
+	list.size++
+}
+
+// Remove deletes the given node if found, and returns value of removed node.
+// Panics if value was not found
+func (list *SinglyLinkedList) Remove(value interface{}) (interface{}, error) {
+	if list.size == 0 {
+		return nil, errors.New("list is empty")
+	}
+
+	// Iterate until we find a node with the given given value
+	var previous *LinkedListNode
+	for node := list.head; node != nil; node = node.next {
+		if node.value == value {
+			if list.head == node { // Removing head
+				list.head = list.head.next
+			} else if list.tail == node { // Removing tail
+				previous.next = nil
+				list.tail = previous
+			} else { // Everything in between
+				previous.next = node.next
+			}
+
+			// Update size and reset head/tail if list is now empty
+			list.size--
+			if list.size == 0 {
+				list.head = nil
+				list.tail = nil
+			}
+			return value, nil
+		}
+		previous = node
+	}
+
+	return nil, errors.New("value not found")
+}
+
