@@ -57,3 +57,19 @@ func (list *SinglyLinkedList) Length() int {
 	return list.size
 }
 
+// Prepend adds the given value to the beginning of the list
+func (list *SinglyLinkedList) Prepend(value interface{}) {
+	node := &LinkedListNode{value: value, next: nil}
+	// If the list is empty, head and tail both point to the new node
+	if list.size == 0 {
+		list.head = node
+		list.tail = node
+	} else {
+		node.next = list.head // new node points to the current head
+		list.head = node      // new node is the new head
+	}
+
+	// Update size
+	list.size++
+}
+
