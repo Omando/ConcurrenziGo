@@ -122,3 +122,23 @@ func (list *SinglyLinkedList) Remove(value interface{}) (interface{}, error) {
 	return nil, errors.New("value not found")
 }
 
+// Contains returns true if given value exists, otherwise returns false
+func (list *SinglyLinkedList) Contains(value interface{}) bool {
+	if list.size == 0 {
+		return false
+	}
+
+	// Check head and tail first
+	if list.head.value == value || list.tail.value == value {
+		return true
+	}
+
+	// Iterate through the rest of the list
+	for node := list.head.next; node != list.tail; node = node.next {
+		if node.value == value {
+			return true
+		}
+	}
+
+	return false
+}
